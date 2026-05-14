@@ -1,0 +1,60 @@
+/**
+ * Global Stylesheet
+ * 
+ * Includes Tailwind CSS directives and variable definitions for themes.
+ * Configures font families (Inter and Playfair Display) for the luxury aesthetic
+ * and specifies Lenis smooth-scrolling baseline configurations.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 antialiased select-none;
+  }
+
+  /* Luxury focus states - subtle and sophisticated */
+  :focus-visible {
+    @apply outline-none ring-1 ring-slate-900 ring-offset-2;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl transition-all duration-300;
+  }
+  
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-2xl border border-white/40 shadow-2xl transition-all duration-500;
+  }
+
+  .glass-button {
+    @apply bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/40 transition-all duration-300;
+  }
+}

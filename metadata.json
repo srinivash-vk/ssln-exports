@@ -1,0 +1,7 @@
+{
+  "name": "SSLN EXPORTS",
+  "description": "Premium multi-terry towels by SSLN EXPORTS. High-quality face towels, hand towels, bath towels, and mats for global export.",
+  "requestFramePermissions": [
+    "identity-credentials-get"
+  ]
+}
