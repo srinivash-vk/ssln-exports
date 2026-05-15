@@ -104,7 +104,7 @@ const ProductCard: React.FC<ProductCardProps> = memo(({ product, onSelectProduct
         </div>
 
         <div className="mb-4 flex flex-col items-center scale-85 origin-center">
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-3">Color Palette</span>
+          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-3">Colors Available</span>
           <ColorPalette colors={product.color} />
         </div>
 
@@ -143,9 +143,14 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
         "https://images.unsplash.com/photo-1616627141141-4e1e3370ed39?auto=format&fit=crop&q=80&w=800"
       ],
       "Hand Towel": [
-        "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800",
-        "https://images.unsplash.com/photo-1616627187314-06023869612f?auto=format&fit=crop&q=80&w=800",
-        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"
+        "/assets/products/hand-towel/white_handTowel.jpeg",
+        "/assets/products/hand-towel/black_handTowel.jpeg",
+        "/assets/products/hand-towel/burgundy_handTowel.jpeg",
+        "/assets/products/hand-towel/navy_handTowel.jpeg",
+        "/assets/products/hand-towel/green_handTowel.jpeg",
+        "/assets/products/hand-towel/grey_handTowel.jpeg",
+        "/assets/products/hand-towel/beige_handTowel.jpeg",
+        "/assets/products/hand-towel/brown_handTowel.jpeg"
       ],
       "Bath Towel": [
         "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
@@ -170,8 +175,8 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
       items: (DETAILED_PRODUCTS[cat] || []).map((spec, i) => {
         let images = categoryImages[cat] || ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"];
         
-        // Use specific images for categories where each card represents a distinct color or variation
-        const needsSpecificImage = ["Set Towels"].includes(cat);
+        // Use specific images for categories where each card represents a distinct color or GSM variation
+        const needsSpecificImage = ["Set Towels", "Hand Towel"].includes(cat);
         if (needsSpecificImage && categoryImages[cat] && categoryImages[cat][i]) {
           images = [categoryImages[cat][i]];
         }
@@ -191,7 +196,7 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
   }, [products, activeTab]);
 
   return (
-    <section id="products" className="py-32 bg-white">
+    <section id="products" className="py-32 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="text-center mb-24 gsap-fade-up">
           <span className="text-[10px] font-medium tracking-[0.5em] text-slate-400 uppercase mb-6 block">The Collection</span>
