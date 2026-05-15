@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import QuoteModal from "./components/QuoteModal";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
+import UnderDevelopment from "./components/UnderDevelopment";
 
 // Register GSAP ScrollTrigger plugin for scroll-based animations
 gsap.registerPlugin(ScrollTrigger);
@@ -40,6 +41,8 @@ function AppContent() {
   const appRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const isNotFound = location.pathname !== "/";
+  const isUnderDevelopment = import.meta.env.VITE_SITE_UNDER_DEVELOPMENT === "true";
+  const showSiteFrame = !isUnderDevelopment && !isNotFound;
 
   /**
    * handleRequestQuote: Opens the quote modal and sets the context product.
@@ -83,7 +86,7 @@ function AppContent() {
    * Initialization of Lenis Smooth Scrolling and GSAP Animations.
    */
   useEffect(() => {
-    if (isNotFound) return;
+    if (isNotFound || isUnderDevelopment) return;
 
     const ctx = gsap.context(() => {
       // Configuration for Lenis smooth scroll
@@ -141,14 +144,14 @@ function AppContent() {
       ctx.revert();
       if (window.LenisInstance) {
         window.LenisInstance.destroy();
-        window.LenisInstance = undefined;
+        window.LenisInstance = null;
       }
     };
   }, [isNotFound]);
 
   return (
     <div ref={appRef} className="relative bg-white font-sans text-slate-900 antialiased overflow-x-hidden">
-      {!isNotFound && (
+      {showSiteFrame && (
         <>
           <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-50/50 rounded-full blur-[120px]" />
@@ -172,11 +175,12 @@ function AppContent() {
       
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Home onSelectProduct={handleRequestQuote} />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={isUnderDevelopment ? <UnderDevelopment /> : <Home onSelectProduct={handleRequestQuote} />} />
+        <Route path="/development" element={<UnderDevelopment />} />
+        <Route path="*" element={isUnderDevelopment ? <UnderDevelopment /> : <NotFound />} />
       </Routes>
 
-      {!isNotFound && <Footer />}
+      {showSiteFrame && <Footer />}
 
       <QuoteModal 
         isOpen={isQuoteModalOpen} 

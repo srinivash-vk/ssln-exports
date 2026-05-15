@@ -88,23 +88,23 @@ const ProductCard: React.FC<ProductCardProps> = memo(({ product, onSelectProduct
         
         <div className="flex justify-center items-center gap-3 mb-4 py-3 border-y border-white/30 w-full text-[11px]">
           <div className="flex flex-col items-center">
-            <p className="text-[7px] font-bold text-slate-400 uppercase tracking-widest mb-1 leading-none">Size</p>
-            <p className="font-medium text-slate-800">{product.size}</p>
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 leading-none">Size</p>
+            <p className="font-medium text-[13px] text-slate-800">{product.size}</p>
           </div>
           <div className="w-[1px] h-6 bg-white/30" />
           <div className="flex flex-col items-center">
-            <p className="text-[7px] font-bold text-slate-400 uppercase tracking-widest mb-1 leading-none">GSM</p>
-            <p className="font-medium text-slate-800">{product.gsm}</p>
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 leading-none">GSM</p>
+            <p className="font-medium text-[13px] text-slate-800">{product.gsm}</p>
           </div>
           <div className="w-[1px] h-6 bg-white/30" />
           <div className="flex flex-col items-center">
-            <p className="text-[7px] font-bold text-slate-400 uppercase tracking-widest mb-1 leading-none">Weight</p>
-            <p className="font-medium text-slate-800">{product.weight}</p>
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 leading-none">Weight</p>
+            <p className="font-medium text-[13px] text-slate-800">{product.weight}</p>
           </div>
         </div>
 
         <div className="mb-4 flex flex-col items-center scale-85 origin-center">
-          <span className="text-[7px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-3">Color Palette</span>
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-3">Color Palette</span>
           <ColorPalette colors={product.color} />
         </div>
 
