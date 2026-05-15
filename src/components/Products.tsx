@@ -152,9 +152,9 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
         "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800"
       ],
       "Bleach Towels": [
-        "https://images.unsplash.com/photo-1616627187314-06023869612f?auto=format&fit=crop&q=80&w=800",
-        "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800",
-        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"
+        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1567016432779-c4d97b11bf43?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1523475496153-3d6cc82db54f?auto=format&fit=crop&q=80&w=800"
       ],
       "Set Towels": [
         "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800", // Black
@@ -171,7 +171,7 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
         let images = categoryImages[cat] || ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"];
         
         // Use specific images for categories where each card represents a distinct color or variation
-        const needsSpecificImage = ["Set Towels", "Bleach Towels"].includes(cat);
+        const needsSpecificImage = ["Set Towels"].includes(cat);
         if (needsSpecificImage && categoryImages[cat] && categoryImages[cat][i]) {
           images = [categoryImages[cat][i]];
         }
