@@ -154,8 +154,10 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
         "/assets/products/hand-towel/brown_handTowel.jpeg"
       ],
       "Bath Towel": [
-        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
-        "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800"
+        "/assets/products/bath-towels/white_bathTowel.jpeg",
+        "/assets/products/bath-towels/black_bathTowel.jpeg",
+        "/assets/products/bath-towels/brown_bathTowel.jpeg",
+        "/assets/products/bath-towels/navyBlue_bathTowel.jpeg",
       ],
       "Beach Towels": [
         "/assets/products/beach-towel/blue_beachTowel.jpeg",
@@ -164,32 +166,63 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
         "/assets/products/beach-towel/green_beachTowel.png",
       ],
       "Set Towels": [
-        "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800", // Black
-        "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&q=80&w=800", // Navy Blue
-        "https://images.unsplash.com/photo-1616627187314-06023869612f?auto=format&fit=crop&q=80&w=800", // Beige
-        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800", // Brown
-        "https://images.unsplash.com/photo-1616627141141-4e1e3370ed39?auto=format&fit=crop&q=80&w=800"  // Grey
+        "/assets/products/set-towels/black_setTowels.jpeg", // Black
+        "/assets/products/set-towels/navy_setTowels.jpeg", // Navy Blue
+        "/assets/products/set-towels/beige_setTowels.jpeg", // Beige
+        "/assets/products/set-towels/brown_setTowels.jpeg", // Brown
+        "/assets/products/set-towels/gray_setTowels.jpeg", // Grey
+        "/assets/products/set-towels/white_setTowels.jpeg"  // white
       ]
     };
 
     return PRODUCT_CATEGORIES.map(cat => ({
       category: cat,
       items: (DETAILED_PRODUCTS[cat] || []).map((spec, i) => {
-        let images = categoryImages[cat] || ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"];
-        
-        // Use specific images for categories where each card represents a distinct color or GSM variation
-        const needsSpecificImage = ["Set Towels", "Beach Towels"].includes(cat);
-        if (needsSpecificImage && categoryImages[cat] && categoryImages[cat][i]) {
-          images = [categoryImages[cat][i]];
-        }
 
-        return {
-          id: `${cat}-${i}`,
-          category: cat,
-          ...spec,
-          images
-        };
-      })
+  let images =
+    categoryImages[cat] || [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"
+    ];
+
+  /**
+   * Set Towels & Beach Towels
+   * single image per card
+   */
+  const needsSpecificImage = [
+    "Set Towels",
+    "Beach Towels"
+  ].includes(cat);
+
+  if (
+    needsSpecificImage &&
+    categoryImages[cat] &&
+    categoryImages[cat][i]
+  ) {
+    images = [categoryImages[cat][i]];
+  }
+
+  /**
+   * Bath Towel
+   * ONLY 340 GSM
+   * show one image
+   */
+  if (
+    cat === "Bath Towel" &&
+    String(spec.gsm).includes("340")
+  ) {
+    images = [
+      "/assets/products/bath-towels/colour_bathTowels.jpeg"
+    ];
+  }
+
+  return {
+    id: `${cat}-${i}`,
+    category: cat,
+    ...spec,
+    images
+  };
+})
+
     }));
   }, []);
 

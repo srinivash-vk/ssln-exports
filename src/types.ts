@@ -37,7 +37,8 @@ export const DETAILED_PRODUCTS: Record<string, ProductSpec[]> = {
   "Bath Towel": [
     { size: '30" x 60"', gsm: "480", weight: "550g", color: "White, Black, Navy Blue, Brown" },
     { size: '30" x 60"', gsm: "520", weight: "600g", color: "White, Black, Navy Blue, Brown" },
-    { size: '30" x 60"', gsm: "550", weight: "650g", color: "White, Black, Navy Blue, Brown" }
+    { size: '30" x 60"', gsm: "550", weight: "650g", color: "White, Black, Navy Blue, Brown" },
+    { size: '30" x 60"', gsm: "340", weight: "440g", color: "White, Purple, Blue, Brown, Pink, Red, Mint Green" }
   ],
   "Beach Towels": [
     { size: '36" x 72"', gsm: "450", weight: "750g", color: "Royal Blue/White" },
@@ -46,10 +47,11 @@ export const DETAILED_PRODUCTS: Record<string, ProductSpec[]> = {
     { size: '36" x 72"', gsm: "450", weight: "750g", color: "Green/White" },
   ],
   "Set Towels": [
-    { size: '30" x 60"', gsm: "480-500", weight: "550g", color: "Black" },
-    { size: '30" x 60"', gsm: "480-500", weight: "550g", color: "Navy Blue" },
-    { size: '30" x 60"', gsm: "480-500", weight: "550g", color: "Beige" },
-    { size: '30" x 60"', gsm: "480-500", weight: "550g", color: "Brown" },
-    { size: '30" x 60"', gsm: "480-500", weight: "550g", color: "Grey" }
+    { size: '30" x 60" | "20" x "40" | "16" x "26" | "12" x "12"', gsm: "480-500", weight: "550g", color: "Black" },
+    { size: '30" x 60" | "20" x "40" | "16" x "26" | "12" x "12', gsm: "480-500", weight: "550g", color: "Navy Blue" },
+    { size: '30" x 60" | "20" x "40" | "16" x "26" | "12" x "12', gsm: "480-500", weight: "550g", color: "Beige" },
+    { size: '30" x 60" | "20" x "40" | "16" x "26" | "12" x "12', gsm: "480-500", weight: "550g", color: "Brown" },
+    { size: '30" x 60" | "20" x "40" | "16" x "26" | "12" x "12', gsm: "480-500", weight: "550g", color: "Grey" },
+    { size: '30" x 60" | "20" x "40" | "16" x "26" | "12" x "12', gsm: "480-500", weight: "550g", color: "White" }
   ]
 };

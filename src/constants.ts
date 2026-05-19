@@ -18,6 +18,10 @@ export const COLOR_MAP: Record<string, string> = {
   "Green": "#14532d",
   "Royal Blue": "#1d4ed8",
   "Yellow": "#facc15",
+  "Pink": "#ec4899",
+  "Red": "#dc2626",
+  "Mint Green": "#a7f3d0",
+  "Blue": "#3b82f6",
 };
 
 export const NAV_LINKS = [
