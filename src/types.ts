@@ -39,10 +39,11 @@ export const DETAILED_PRODUCTS: Record<string, ProductSpec[]> = {
     { size: '30" x 60"', gsm: "520", weight: "600g", color: "White, Black, Navy Blue, Brown" },
     { size: '30" x 60"', gsm: "550", weight: "650g", color: "White, Black, Navy Blue, Brown" }
   ],
-  "Bleach Towels": [
+  "Beach Towels": [
     { size: '36" x 72"', gsm: "450", weight: "750g", color: "Royal Blue/White" },
     { size: '36" x 72"', gsm: "450", weight: "750g", color: "Yellow/White" },
-    { size: '36" x 72"', gsm: "450", weight: "750g", color: "Brown/White" }
+    { size: '36" x 72"', gsm: "450", weight: "750g", color: "Brown/White" },
+    { size: '36" x 72"', gsm: "450", weight: "750g", color: "Green/White" },
   ],
   "Set Towels": [
     { size: '30" x 60"', gsm: "480-500", weight: "550g", color: "Black" },

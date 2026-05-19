@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { ArrowLeft, Compass } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 

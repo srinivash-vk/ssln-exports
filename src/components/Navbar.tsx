@@ -1,6 +1,6 @@
 import React, { useState, memo } from "react";
 import { X, Menu, Sun, Moon } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useScroll } from "../hooks/useScroll";
 import { NAV_LINKS } from "../constants";
 

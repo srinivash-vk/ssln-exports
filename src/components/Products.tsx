@@ -1,9 +1,10 @@
 import React, { useState, useMemo, memo } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Product, DETAILED_PRODUCTS } from "../types";
 import { PRODUCT_CATEGORIES } from "../constants";
 import ColorPalette from "./ColorPalette";
+import { AnimatedElement } from "./AnimatedElement";
 
 interface ProductCardProps {
   product: Product;
@@ -30,7 +31,7 @@ const ProductCard: React.FC<ProductCardProps> = memo(({ product, onSelectProduct
 
   return (
     <div 
-      className="group cursor-pointer gsap-fade-up flex flex-col items-center glass-card p-5 sm:p-6 rounded-[2rem] transition-all duration-400 hover:scale-[1.02] active:scale-[0.98]"
+      className="group cursor-pointer flex flex-col items-center glass-card p-5 sm:p-6 rounded-[2rem] transition-all duration-400 hover:scale-[1.02] active:scale-[0.98]"
       onClick={() => onSelectProduct(product)}
     >
       <div className="relative w-full aspect-[4/5] overflow-hidden bg-white/50 mb-4 shadow-sm border border-white/20 rounded-2xl">
@@ -156,10 +157,11 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
         "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
         "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800"
       ],
-      "Bleach Towels": [
-        "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&q=80&w=800",
-        "https://images.unsplash.com/photo-1567016432779-c4d97b11bf43?auto=format&fit=crop&q=80&w=800",
-        "https://images.unsplash.com/photo-1523475496153-3d6cc82db54f?auto=format&fit=crop&q=80&w=800"
+      "Beach Towels": [
+        "public/assets/products/beach-towel/blue_beachTowel.jpeg",
+        "public/assets/products/beach-towel/yellow_beachTowel.jpeg",
+        "public/assets/products/beach-towel/brown_beachTowel.jpeg",
+        "public/assets/products/beach-towel/green_beachTowel.png",
       ],
       "Set Towels": [
         "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800", // Black
@@ -176,7 +178,7 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
         let images = categoryImages[cat] || ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"];
         
         // Use specific images for categories where each card represents a distinct color or GSM variation
-        const needsSpecificImage = ["Set Towels", "Hand Towel"].includes(cat);
+        const needsSpecificImage = ["Set Towels", "Beach Towels"].includes(cat);
         if (needsSpecificImage && categoryImages[cat] && categoryImages[cat][i]) {
           images = [categoryImages[cat][i]];
         }
@@ -198,46 +200,51 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
   return (
     <section id="products" className="py-32 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-24 gsap-fade-up">
-          <span className="text-[10px] font-medium tracking-[0.5em] text-slate-400 uppercase mb-6 block">The Collection</span>
-          <h2 className="font-display text-5xl md:text-6xl font-light text-slate-900 mb-8 italic">Curated Excellence</h2>
-          <p className="text-slate-500 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
-            A symphony of texture and durability. Each piece in our collection is a testament to our commitment to artisanal quality.
-          </p>
-        </div>
+        <AnimatedElement>
+          <div className="text-center mb-24">
+            <span className="text-[10px] font-medium tracking-[0.5em] text-slate-400 uppercase mb-6 block">The Collection</span>
+            <h2 className="font-display text-5xl md:text-6xl font-light text-slate-900 mb-8 italic">Curated Excellence</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
+              A symphony of texture and durability. Each piece in our collection is a testament to our commitment to artisanal quality.
+            </p>
+          </div>
+        </AnimatedElement>
 
         {/* Minimalist Tabs */}
-        <div className="flex flex-wrap justify-center gap-6 sm:gap-12 mb-24 p-2 glass rounded-full w-fit mx-auto gsap-fade-up">
-          {PRODUCT_CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className={`relative px-6 py-3 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-500 rounded-full ${
-                activeTab === cat 
-                  ? "text-slate-900" 
-                  : "text-slate-400 hover:text-slate-600"
-              }`}
-            >
-              <span className="relative z-10">{cat}</span>
-              {activeTab === cat && (
-                <motion.div 
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-white rounded-full shadow-sm"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.3 }}
-                />
-              )}
-            </button>
-          ))}
-        </div>
+        <AnimatedElement delay={0.1}>
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-12 mb-24 p-2 glass rounded-full w-fit mx-auto">
+            {PRODUCT_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveTab(cat)}
+                className={`relative px-6 py-3 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-500 rounded-full ${
+                  activeTab === cat 
+                    ? "text-slate-900" 
+                    : "text-slate-400 hover:text-slate-600"
+                }`}
+              >
+                <span className="relative z-10">{cat}</span>
+                {activeTab === cat && (
+                  <motion.div 
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-white rounded-full shadow-sm"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.3 }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+        </AnimatedElement>
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 max-w-7xl mx-auto px-4 md:px-0">
-          {activeProducts.map((product) => (
-            <ProductCard 
-              key={product.id} 
-              product={product} 
-              onSelectProduct={onSelectProduct} 
-            />
+          {activeProducts.map((product, index) => (
+            <AnimatedElement key={product.id} delay={index * 0.05}>
+              <ProductCard 
+                product={product} 
+                onSelectProduct={onSelectProduct} 
+              />
+            </AnimatedElement>
           ))}
         </div>
       </div>

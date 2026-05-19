@@ -10,7 +10,7 @@ const ColorPalette = memo(({ colors }: { colors: string }) => {
   const colorList = useMemo(() => colors.split(',').map(c => c.trim()), [colors]);
   
   return (
-    <div className="flex flex-wrap gap-1.5 mt-3 justify-center">
+    <div className="flex flex-wrap gap-1.5 mt-3 justify-center p-2 rounded-md">
       {colorList.map((color, idx) => {
         // Handle dual-tone colors (e.g., "White / Blue")
         if (color.includes('/')) {
@@ -22,7 +22,7 @@ const ColorPalette = memo(({ colors }: { colors: string }) => {
                 <div className="w-1/2 h-full" style={{ backgroundColor: COLOR_MAP[c1] || '#ccc' }} />
                 <div className="w-1/2 h-full" style={{ backgroundColor: COLOR_MAP[c2] || '#ccc' }} />
               </div>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-900 text-white text-[8px] rounded-sm opacity-0 group-hover/swatch:opacity-100 transition-all scale-90 group-hover/swatch:scale-100 whitespace-nowrap z-10 pointer-events-none uppercase tracking-[0.2em] shadow-xl">
+              <div className="border-4 border-slate-900 absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-900 text-white text-[8px] rounded-sm opacity-0 group-hover/swatch:opacity-100 transition-all scale-90 group-hover/swatch:scale-100 whitespace-nowrap z-10 pointer-events-none uppercase tracking-[0.2em] shadow-xl">
                 {color}
               </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AnimatedElement } from "./AnimatedElement";
 
 /**
  * Contact Component: Standard inquiry form for the contact section.
@@ -99,41 +100,44 @@ const Contact = () => {
     <section id="contact" className="py-24 md:py-32 bg-slate-50 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div className="gsap-fade-up">
-            <span className="text-[10px] font-medium tracking-[0.5em] text-slate-400 uppercase mb-6 block">Inquiries</span>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-slate-900 mb-10 italic">Let's Connect</h2>
-            <p className="text-slate-500 mb-10 md:mb-16 leading-relaxed font-light tracking-wide max-w-lg text-lg">
-              We invite you to experience our collection firsthand. Our team is dedicated to providing bespoke solutions for your global export needs.
-            </p>
-            
-            <div className="space-y-8 md:space-y-12">
-              <div className="flex items-start gap-6 md:gap-8">
-                <div className="w-[1px] h-12 bg-slate-200 mt-2" />
-                <div>
-                  <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-2">Email</h4>
-                  <p className="text-slate-900 font-medium tracking-wide text-sm md:text-base">enquiry.sslnexports@gmail.com</p>
+          <AnimatedElement>
+            <div>
+              <span className="text-[10px] font-medium tracking-[0.5em] text-slate-400 uppercase mb-6 block">Inquiries</span>
+              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-slate-900 mb-10 italic">Let's Connect</h2>
+              <p className="text-slate-500 mb-10 md:mb-16 leading-relaxed font-light tracking-wide max-w-lg text-lg">
+                We invite you to experience our collection firsthand. Our team is dedicated to providing bespoke solutions for your global export needs.
+              </p>
+              
+              <div className="space-y-8 md:space-y-12">
+                <div className="flex items-start gap-6 md:gap-8">
+                  <div className="w-[1px] h-12 bg-slate-200 mt-2" />
+                  <div>
+                    <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-2">Email</h4>
+                    <p className="text-slate-900 font-medium tracking-wide text-sm md:text-base">enquiry.sslnexports@gmail.com</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-6 md:gap-8">
-                <div className="w-[1px] h-12 bg-slate-200 mt-2" />
-                <div>
-                  <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-2">Mobile</h4>
-                  <p className="text-slate-900 font-medium tracking-wide text-sm md:text-base">+91 94874-22259</p>
+                <div className="flex items-start gap-6 md:gap-8">
+                  <div className="w-[1px] h-12 bg-slate-200 mt-2" />
+                  <div>
+                    <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-2">Mobile</h4>
+                    <p className="text-slate-900 font-medium tracking-wide text-sm md:text-base">+91 94874-22259</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-6 md:gap-8">
-                <div className="w-[1px] h-12 bg-slate-200 mt-2" />
-                <div>
-                  <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-2">Office</h4>
-                  <p className="text-slate-900 font-medium tracking-wide leading-relaxed text-sm md:text-base">
-                    1/91/2, Malappalayam, Kadachanallur - 638008, <br className="hidden sm:block" /> Namakkal DT, Tamil Nadu, India
-                  </p>
+                <div className="flex items-start gap-6 md:gap-8">
+                  <div className="w-[1px] h-12 bg-slate-200 mt-2" />
+                  <div>
+                    <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-2">Office</h4>
+                    <p className="text-slate-900 font-medium tracking-wide leading-relaxed text-sm md:text-base">
+                      1/91/2, Malappalayam, Kadachanallur - 638008, <br className="hidden sm:block" /> Namakkal DT, Tamil Nadu, India
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </AnimatedElement>
 
-          <div className="glass-card p-8 md:p-12 lg:p-16 rounded-[3rem] shadow-2xl gsap-fade-up">
+          <AnimatedElement delay={0.1}>
+            <div className="glass-card p-8 md:p-12 lg:p-16 rounded-[3rem] shadow-2xl">
             <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10">
               {formError && (
                 <div className="text-red-500 text-sm font-medium">{formError}</div>
@@ -198,7 +202,8 @@ const Contact = () => {
                 )}
               </button>
             </form>
-          </div>
+            </div>
+          </AnimatedElement>
         </div>
       </div>
     </section>

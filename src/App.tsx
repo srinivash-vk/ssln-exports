@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Product } from "./types";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,9 +8,6 @@ import QuoteModal from "./components/QuoteModal";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 import UnderDevelopment from "./components/UnderDevelopment";
-
-// Register GSAP ScrollTrigger plugin for scroll-based animations
-gsap.registerPlugin(ScrollTrigger);
 
 /**
  * ScrollToTop component: Resets scroll position when the URL pathname changes.
@@ -83,71 +78,41 @@ function AppContent() {
   }, []);
 
   /**
-   * Initialization of Lenis Smooth Scrolling and GSAP Animations.
+   * Initialization of Lenis Smooth Scrolling.
+   * Framer Motion animations are handled at component level.
    */
   useEffect(() => {
     if (isNotFound || isUnderDevelopment) return;
 
-    const ctx = gsap.context(() => {
-      // Configuration for Lenis smooth scroll
-      const lenis = new Lenis({
-        duration: 0.6,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: "vertical",
-        gestureOrientation: "vertical",
-        smoothWheel: true,
-        wheelMultiplier: 1.1,
-        touchMultiplier: 2,
-        infinite: false,
-      });
+    // Configuration for Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 0.6,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
 
-      window.LenisInstance = lenis;
-      lenis.on("scroll", ScrollTrigger.update);
+    window.LenisInstance = lenis;
 
-      // Animation frame driver for smooth scrolling
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
-
-      gsap.ticker.lagSmoothing(0);
-
-      // Hero Parallax effect
-      gsap.to(".gsap-parallax-bg", {
-        scrollTrigger: {
-          trigger: "#home",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-        y: 150,
-        ease: "none",
-      });
-
-      // Global Reveal Animations for elements with .gsap-fade-up class
-      gsap.utils.toArray<HTMLElement>(".gsap-fade-up").forEach((el) => {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-          y: 40,
-          opacity: 0,
-          duration: 0.4,
-          ease: "power2.out",
-        });
-      });
-    }, appRef);
+    // Animation frame driver for smooth scrolling
+    let animationFrameId: number;
+    const animate = (time: number) => {
+      lenis.raf(time);
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animationFrameId = requestAnimationFrame(animate);
 
     // Cleanup on component unmount
     return () => {
-      ctx.revert();
-      if (window.LenisInstance) {
-        window.LenisInstance.destroy();
-        window.LenisInstance = null;
-      }
+      cancelAnimationFrame(animationFrameId);
+      lenis.destroy();
+      window.LenisInstance = null;
     };
-  }, [isNotFound]);
+  }, [isNotFound, isUnderDevelopment]);
 
   return (
     <div ref={appRef} className="relative bg-white font-sans text-slate-900 antialiased overflow-x-hidden">
