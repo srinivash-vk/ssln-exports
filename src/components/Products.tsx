@@ -158,10 +158,10 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
         "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800"
       ],
       "Beach Towels": [
-        "public/assets/products/beach-towel/blue_beachTowel.jpeg",
-        "public/assets/products/beach-towel/yellow_beachTowel.jpeg",
-        "public/assets/products/beach-towel/brown_beachTowel.jpeg",
-        "public/assets/products/beach-towel/green_beachTowel.png",
+        "/assets/products/beach-towel/blue_beachTowel.jpeg",
+        "/assets/products/beach-towel/yellow_beachTowel.jpeg",
+        "/assets/products/beach-towel/brown_beachTowel.jpeg",
+        "/assets/products/beach-towel/green_beachTowel.png",
       ],
       "Set Towels": [
         "https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&q=80&w=800", // Black
