@@ -58,3 +58,19 @@
     @apply bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/40 transition-all duration-300;
   }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  min-width: 100%;
+  animation: marquee 40s linear infinite;
+}

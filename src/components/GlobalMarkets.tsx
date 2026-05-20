@@ -37,6 +37,7 @@ const GlobalMarkets = memo(() => {
                   alt="Global Hospitality and Resort Toweling Supply"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 glass-card p-4 md:p-6 shadow-2xl rounded-2xl hidden sm:block border border-slate-100 z-20">
@@ -47,6 +48,7 @@ const GlobalMarkets = memo(() => {
                       alt="Worldwide Logistics and Towel Distribution Network"
                       className="w-full h-full object-cover grayscale-[0.2]"
                       referrerPolicy="no-referrer"
+                      loading="lazy"
                     />
                   </div>
                   <div className="flex flex-col">

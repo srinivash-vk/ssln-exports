@@ -31,6 +31,7 @@ const Hero = memo(() => {
             alt="Premium Terry Towels Manufacturing and Export" 
             className="w-full h-full object-cover brightness-[0.45] scale-110"
             referrerPolicy="no-referrer"
+            loading="lazy"
           />
         </ParallaxElement>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/80" />
@@ -39,9 +40,17 @@ const Hero = memo(() => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-white flex flex-col items-center text-center w-full">
         <div className="max-w-4xl flex flex-col items-center w-full">
           <AnimatedElement delay={0}>
-            <span className="inline-block mb-6 md:mb-8 text-[9px] md:text-[10px] font-medium tracking-[0.4em] md:tracking-[0.5em] text-white/80 uppercase">
-              Artisanal Craftsmanship Since 2008
-            </span>
+           <div className="w-full overflow-hidden mb-6 md:mb-8">
+  <div className="animate-marquee whitespace-nowrap text-[9px] md:text-[10px] font-bold tracking-[0.4em] md:tracking-[0.5em] text-white/80 uppercase">
+    ✦ Artisanal Craftsmanship Since 2008   ✦
+    Premium Terry Towels   ✦
+    Export Quality   ✦
+    Luxury Textile Manufacturing   ✦
+    Private Label Towels   ✦
+    Custom Branding   ✦
+  </div>
+</div>
+
           </AnimatedElement>
           <AnimatedElement delay={0.1}>
             <h1 className="font-display text-4xl sm:text-6xl md:text-8xl font-light mb-8 md:mb-10 leading-[1.2] md:leading-[1.1]">
