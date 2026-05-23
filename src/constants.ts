@@ -40,7 +40,7 @@ export const FACILITIES = [
   {
     title: "Dyeing",
     details: "Jigger and Soft Flow",
-    description: "Bleach Resistant Proof. VAT dyeing processes ensuring vibrant, long-lasting colors and soft hand-feel.",
+    description: "Fade Resistant Excellence — We specialize in advanced VAT dyeing processes that ensure vibrant, long-lasting colors with a luxuriously soft hand feel.",
   },
   {
     title: "Processing",

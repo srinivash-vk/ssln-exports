@@ -37,13 +37,18 @@ const Infrastructure = memo(() => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {FACILITIES.map((facility, i) => (
             <AnimatedElement key={i} delay={i * 0.05}>
-              <div className="group p-8 glass-card rounded-[2.5rem] border border-slate-100 hover:border-slate-900 transition-all duration-400">
-                <div className="w-14 h-14 glass rounded-xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
+              <div className="group flex flex-col items-center justify-between h-full min-h-[370px] p-8 glass-card rounded-[2.5rem] border border-slate-100 hover:border-slate-900 transition-all duration-400 shadow-lg hover:shadow-2xl bg-gradient-to-br from-white/80 to-slate-50">
+                <div className="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-6 shadow-md group-hover:bg-slate-900 group-hover:text-white transition-all duration-300 text-slate-900 text-3xl">
                   {ICON_MAP[facility.title]}
                 </div>
-                <h3 className="text-2xl font-display font-light italic mb-2 text-slate-900">{facility.title}</h3>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">{facility.details}</p>
-                <p className="text-slate-500 font-light text-sm leading-relaxed">{facility.description}</p>
+                <h3 className="text-2xl font-display font-semibold italic mb-1 text-slate-900 group-hover:text-slate-900 transition-colors duration-300 drop-shadow-sm tracking-wide">{facility.title}</h3>
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500 mb-3 group-hover:text-slate-700 transition-colors duration-300">{facility.details}</p>
+                <div className="flex-1 flex items-center justify-center">
+                  <p className="text-slate-600 font-light text-base leading-relaxed text-center px-2 group-hover:text-slate-800 transition-colors duration-300">
+                    <span className="block text-[15px] font-medium text-slate-900 mb-1 italic">{facility.title} Excellence</span>
+                    {facility.description}
+                  </p>
+                </div>
               </div>
             </AnimatedElement>
           ))}
