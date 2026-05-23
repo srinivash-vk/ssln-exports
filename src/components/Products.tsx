@@ -15,24 +15,47 @@ interface ProductCardProps {
  * ProductCard Component: Displays individual product details with a focused image gallery.
  */
 const ProductCard: React.FC<ProductCardProps> = memo(({ product, onSelectProduct }) => {
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isManuallyNavigated, setIsManuallyNavigated] = useState(false);
 
   // Gallery Navigation: Advances to the next image
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevents card-level click event
+  const nextImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation(); // Prevents card-level click event
     setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
+    setIsManuallyNavigated(true);
   };
 
   // Gallery Navigation: Returns to the previous image
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevents card-level click event
+  const prevImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation(); // Prevents card-level click event
     setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
+    setIsManuallyNavigated(true);
   };
 
+  // Auto-carousel: advance image every 3s unless hovered or manually navigated
+  React.useEffect(() => {
+    if (isHovered || isManuallyNavigated || product.images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isHovered, isManuallyNavigated, product.images.length]);
+
+  // Reset manual navigation after a short delay to resume auto-carousel
+  React.useEffect(() => {
+    if (!isManuallyNavigated) return;
+    const timeout = setTimeout(() => setIsManuallyNavigated(false), 6000);
+    return () => clearTimeout(timeout);
+  }, [isManuallyNavigated]);
+
   return (
-    <div 
+    <div
       className="group cursor-pointer flex flex-col items-center glass-card p-5 sm:p-6 rounded-[2rem] transition-all duration-400 hover:scale-[1.02] active:scale-[0.98]"
       onClick={() => onSelectProduct(product)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative w-full aspect-[4/5] overflow-hidden bg-white/50 mb-4 shadow-sm border border-white/20 rounded-2xl">
         <AnimatePresence mode="wait">
@@ -53,15 +76,17 @@ const ProductCard: React.FC<ProductCardProps> = memo(({ product, onSelectProduct
         {/* Navigation Arrows */}
         {product.images.length > 1 && (
           <div className="absolute inset-0 flex items-center justify-between px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            <button 
+            <button
               onClick={prevImage}
               className="w-7 h-7 bg-white/70 backdrop-blur-md rounded-full flex items-center justify-center text-slate-800 shadow-lg pointer-events-auto transform hover:scale-110 transition-transform active:scale-95"
+              tabIndex={-1}
             >
               <ChevronLeft size={14} />
             </button>
-            <button 
+            <button
               onClick={nextImage}
               className="w-7 h-7 bg-white/70 backdrop-blur-md rounded-full flex items-center justify-center text-slate-800 shadow-lg pointer-events-auto transform hover:scale-110 transition-transform active:scale-95"
+              tabIndex={-1}
             >
               <ChevronRight size={14} />
             </button>
