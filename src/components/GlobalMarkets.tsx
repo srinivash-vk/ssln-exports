@@ -44,7 +44,7 @@ const GlobalMarkets = memo(() => {
                 <div className="flex flex-col gap-4">
                   <div className="w-32 md:w-48 h-24 md:h-32 overflow-hidden rounded-lg">
                     <img
-                      src="https://images.unsplash.com/photo-1586528116311-ad8ed7c83a7f?auto=format&fit=crop&q=80&w=600"
+                      src="/assets/products/logistics.png"
                       alt="Worldwide Logistics and Towel Distribution Network"
                       className="w-full h-full object-cover grayscale-[0.2]"
                       referrerPolicy="no-referrer"
