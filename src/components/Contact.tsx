@@ -4,7 +4,8 @@ import { AnimatedElement } from "./AnimatedElement";
 /**
  * Contact Component: Standard inquiry form for the contact section.
  */
-const Contact = () => {
+import { memo } from "react";
+const Contact = memo(() => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -208,6 +209,6 @@ const Contact = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Contact;
