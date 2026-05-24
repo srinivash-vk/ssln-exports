@@ -20,10 +20,10 @@ declare global {
 }
 
 export const DETAILED_PRODUCTS: Record<string, ProductSpec[]> = {
-  "Face Towel": [
-    { size: '12" x 12"', gsm: "550", weight: "50g", color: "Grey, White, Brown, Beige, Navy Blue, Black" },
-    { size: '13" x 13"', gsm: "600", weight: "50g", color: "Grey, White, Brown, Beige" }
-  ],
+  // "Face Towel": [
+  //   { size: '12" x 12"', gsm: "550", weight: "50g", color: "Grey, White, Brown, Beige, Navy Blue, Black" },
+  //   { size: '13" x 13"', gsm: "600", weight: "50g", color: "Grey, White, Brown, Beige" }
+  // ],
   "Hand Towel": [
     { size: '16" x 26"', gsm: "325", weight: "85g", color: "White, Black, Burgundy, Purple, Navy Blue, Green, Brown" },
     { size: '16" x 26"', gsm: "340", weight: "85g", color: "White, Black, Burgundy, Purple, Navy Blue, Green, Brown" },

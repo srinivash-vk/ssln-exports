@@ -1,5 +1,5 @@
 export const PRODUCT_CATEGORIES = [
-  "Face Towel",
+  // "Face Towel",
   "Hand Towel",
   "Bath Towel",
   "Beach Towels",

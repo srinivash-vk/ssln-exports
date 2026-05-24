@@ -164,10 +164,10 @@ const Products = memo(({ onSelectProduct }: { onSelectProduct: (product: Product
   const products: { category: string; items: Product[] }[] = useMemo(() => {
     // Mapping of categories to curated Unsplash assets
     const categoryImages: Record<string, string[]> = {
-      "Face Towel": [
-        "https://images.unsplash.com/photo-1616627187314-06023869612f?auto=format&fit=crop&q=80&w=800",
-        "https://images.unsplash.com/photo-1616627141141-4e1e3370ed39?auto=format&fit=crop&q=80&w=800"
-      ],
+      // "Face Towel": [
+      //   "https://images.unsplash.com/photo-1616627187314-06023869612f?auto=format&fit=crop&q=80&w=800",
+      //   "https://images.unsplash.com/photo-1616627141141-4e1e3370ed39?auto=format&fit=crop&q=80&w=800"
+      // ],
       "Hand Towel": [
         "/assets/products/hand-towel/white_handTowel.jpeg",
         "/assets/products/hand-towel/black_handTowel.jpeg",
