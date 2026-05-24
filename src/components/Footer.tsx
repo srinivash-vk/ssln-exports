@@ -4,7 +4,6 @@ import { AnimatedElement } from "./AnimatedElement";
 /**
  * Footer Component: Global footer with navigation links and brand info.
  */
-import { memo } from "react";
 const Footer = memo(() => {
   return (
     <footer className="py-20 bg-white border-t border-slate-50 transition-colors duration-500">
