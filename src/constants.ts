@@ -60,10 +60,10 @@ export const FACILITIES = [
 ];
 
 export const MARKETS = [
-  "Hospitality",
-  "Salon and Spa",
-  "Hotels & Resorts",
-  "Retail Brands",
+  "Hospitality & Hotel Industry",
+  "Retail & Private Label Brands",
   "Importers & Distributors",
-  "Institutional Buyers"
+  "Salon & Spa Chains",
+  "Institutional & Bulk Buyers",
+  "Luxury Home Textile Markets"
 ];
