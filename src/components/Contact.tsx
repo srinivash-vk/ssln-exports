@@ -114,7 +114,7 @@ const Contact = memo(() => {
                   <div className="w-[1px] h-12 bg-slate-200 mt-2" />
                   <div>
                     <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-2">Email</h4>
-                    <p className="text-slate-900 font-medium tracking-wide text-sm md:text-base">enquiry.sslnexports@gmail.com</p>
+                    <p className="text-slate-900 font-medium tracking-wide text-sm md:text-base">info@sslnexports.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-6 md:gap-8">
